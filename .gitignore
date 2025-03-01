@@ -1,0 +1,5 @@
+# Ignore unnecessary files (e.g., .env, __pycache__)
+venv/
+.env
+routes/register
+venv/
