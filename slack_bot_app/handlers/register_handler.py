@@ -1,4 +1,4 @@
-from slack_bot_app.app import app
+from slack_bolt import App
 import requests
 
 # def handle_registration_request(respond):
@@ -37,14 +37,15 @@ import requests
 JADE_PALACE_REGISTER_URL = "http://localhost:8080/user/register"
 
 
-def register_user(app):
+def register_user(app: App):
     # It will handle register command in slack
 
-    @app.command("/register")
+    @app.command("/register_shifu")
     def handle_register_command(ack, command, say):
         ack()
         user_id = command["user_id"]  #Get slack user_id
         params = {"user_id": user_id}
+        print(command)
 
         try:
             # Request jade palace for registration link
