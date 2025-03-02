@@ -1,5 +1,5 @@
+from slack_bot_app.app import app
 import requests
-from slack_bot_app.config.settings import FASTAPI_SERVER_URL
 
 # def handle_registration_request(respond):
 #     url = "http://localhost:8080/auth/users/register"
@@ -32,3 +32,29 @@ from slack_bot_app.config.settings import FASTAPI_SERVER_URL
 #     except requests.exceptions.RequestException as e:
 #         # Catch and respond to any request exceptions
 #         respond(f"An error occurred: {e}")
+
+# Jade Palace API that provides the registration page link
+JADE_PALACE_REGISTER_URL = "http://localhost:8080/user/register"
+
+
+def register_user(app):
+    # It will handle register command in slack
+
+    @app.command("/register")
+    def handle_register_command(ack, command, say):
+        ack()
+        user_id = command["user_id"]  #Get slack user_id
+        params = {"user_id": user_id}
+
+        try:
+            # Request jade palace for registration link
+            response = requests.get(JADE_PALACE_REGISTER_URL, params=params)
+            if response.status_code == 200:
+                data = response.json()
+                register_url = data.get("url", "No link receievd")
+                say(f"Click here to register: {register_url}")
+            else:
+                say(f"Failed to fetch registration link. Status: {response.status_code}"
+                   )
+        except Exception as e:
+            say(f"Error fetching registration link: {str(e)}")
