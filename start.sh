@@ -1,1 +1,1 @@
-python slack_bot_app/app.py
+python3 slack_bot_app/app.py
