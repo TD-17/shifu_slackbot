@@ -9,7 +9,7 @@ def ping_gin_route(app: App):
         ack()  # Acknowledge the command immediately
 
         # API endpoint to fetch data
-        api_url = "http://localhost:8080/user/ping"  # Replace with your actual API
+        api_url = "https://jadepalace.onrender.com/user/ping"  # Replace with your actual API
 
         try:
             response = requests.post(api_url)

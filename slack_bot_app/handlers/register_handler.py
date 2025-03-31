@@ -34,7 +34,7 @@ import requests
 #         respond(f"An error occurred: {e}")
 
 # Jade Palace API that provides the registration page link
-JADE_PALACE_REGISTER_URL = "http://localhost:8080/user/register"
+JADE_PALACE_REGISTER_URL = "https://jadepalace.onrender.com/user/register"
 
 
 def register_user(app: App):

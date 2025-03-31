@@ -1,7 +1,7 @@
 import requests
 from slack_bolt import App
 
-API_URL = "http://localhost:8080/user/chat"
+API_URL = "https://jadepalace.onrender.com/user/chat"
 
 
 def ask_shifu_something(app: App):
