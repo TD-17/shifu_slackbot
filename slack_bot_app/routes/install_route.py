@@ -12,5 +12,4 @@ def get_oauth_settings():
         redirect_uri="https://shifu-slackbot.onrender.com/slack/oauth_redirect",
         install_path="/slack/install",
         redirect_uri_path="/slack/oauth_redirect",
-        success=handle_oauth_success
     )
