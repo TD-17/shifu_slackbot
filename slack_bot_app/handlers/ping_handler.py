@@ -5,7 +5,7 @@ def handle_ping_gin_request(respond):
     # respond("Pong! HI there!  Gin server is alive and responding.")
 
     #  URL of the Gin server's /ping endpoint
-    url = "http://localhost:8080/user/ping"
+    url = "http://jadepalace.onrender.com/user/ping"
     try:
         # Send a GET request to the Gin server's /ping endpoint
         response = requests.get(url)
