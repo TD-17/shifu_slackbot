@@ -6,6 +6,8 @@ from routes.ping_route import ping_gin_route
 from routes.ask_shifu import ask_shifu_something
 from routes.register_route import setup_register_route
 from handlers.oauth_handler import setup_oauth_handlers
+import logging
+logging.basicConfig(level=logging.DEBUG)
 
 
 # import routes.register

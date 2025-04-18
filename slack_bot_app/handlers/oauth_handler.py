@@ -12,6 +12,8 @@ def handle_oauth_success(installation, request, response):
 
 def handle_oauth_failure(error, request, response):
     print(f"❌ OAuth flow failed: {error}")
+    print(f"Request: {request}")
+    print(f"Response: {response}")
     response.status = 500
     response.body = "OAuth installation failed."
 
