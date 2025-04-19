@@ -1,4 +1,4 @@
 # List of python dependencies 
-slack-bolt
+slack_bolt>=1.17.0
 python-dotenv
 requests

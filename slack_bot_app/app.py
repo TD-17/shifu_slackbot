@@ -13,13 +13,10 @@ import logging
 
 # Initialize your app with your bot token and signing secret
 app = App(token=SLACK_BOT_TOKEN, signing_secret=SLACK_SIGNING_SECRET, oauth_settings=get_oauth_settings())
-
 # Register your handlers
-setup_oauth_handlers(app)
 ping_gin_route(app)
 ask_shifu_something(app)
 setup_register_route(app)
-
 
 logging.basicConfig(level=logging.DEBUG)
 
