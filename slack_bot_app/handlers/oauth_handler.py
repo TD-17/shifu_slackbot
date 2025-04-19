@@ -2,7 +2,8 @@ import requests
 from slack_bolt.app import App
 from slack_bolt.oauth.callback_options import CallbackOptions
 
-def handle_oauth_success(installation, request, response):
+def handle_oauth_success(request, response):
+    installation = request.context.get("installation")
     install_data = installation.to_dict()
     try:
         requests.post("https://jadepalace.onrender.com/slack/store-auth", json=install_data)
@@ -12,7 +13,6 @@ def handle_oauth_success(installation, request, response):
     return response
 
 def handle_oauth_failure(request, response):
-    print(f"❌ OAuth flow failed: {error}")
     print(f"Request: {request}")
     print(f"Response: {response}")
     response.status = 500
