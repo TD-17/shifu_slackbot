@@ -4,7 +4,9 @@ from slack_bolt.oauth.callback_options import CallbackOptions
 from slack_bolt.response import BoltResponse
 
 def handle_oauth_success(request):
-    installation = request.context.get("installation")
+    print(f"Request object: {dir(request)}")
+    # Access installation directly from SuccessArgs
+    installation = request.installation
     install_data = installation.to_dict()
     try:
         requests.post("https://jadepalace.onrender.com/slack/store-auth", json=install_data)
@@ -15,6 +17,7 @@ def handle_oauth_success(request):
         return BoltResponse(status=500, body="Failed to store installation data.")
 
 def handle_oauth_failure(request):
+    # For FailureArgs, you can access request attributes like request.error if needed
     print(f"Request: {request}")
     return BoltResponse(status=500, body="OAuth installation failed.")
 
