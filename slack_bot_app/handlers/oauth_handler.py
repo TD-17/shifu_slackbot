@@ -30,7 +30,7 @@ def handle_oauth_success(request):
 
         # Make the POST request to store installation data
         response = requests.post(
-            "https://jadepalace.onrender.com/slack/store-auth",
+            "https://jadepalace.onrender.com/user/slack/store-auth",
             json=serialized_data,
             timeout=10  # Add a timeout to avoid hanging
         )
