@@ -1,5 +1,5 @@
-from slack_bolt.oauth.oauth_settings import OAuthSettings
-from handlers.oauth_handler import handle_oauth_success
+from slack_bolt.oauth.oauth_settings import OAuthSettings, CallbackOptions
+from handlers.oauth_handler import handle_oauth_success, handle_oauth_failure
 from config.settings import SLACK_CLIENT_ID, SLACK_CLIENT_SECRET
 
 def get_oauth_settings():
@@ -12,4 +12,8 @@ def get_oauth_settings():
         redirect_uri="https://shifu-slackbot.onrender.com/slack/oauth_redirect",
         install_path="/slack/install",
         redirect_uri_path="/slack/oauth_redirect",
+        callback_options=CallbackOptions(
+            success=handle_oauth_success,
+            failure=handle_oauth_failure,
+        )
     )

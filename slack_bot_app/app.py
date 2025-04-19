@@ -7,7 +7,6 @@ from routes.ask_shifu import ask_shifu_something
 from routes.register_route import setup_register_route
 from handlers.oauth_handler import setup_oauth_handlers
 import logging
-logging.basicConfig(level=logging.DEBUG)
 
 
 # import routes.register
@@ -16,10 +15,13 @@ logging.basicConfig(level=logging.DEBUG)
 app = App(token=SLACK_BOT_TOKEN, signing_secret=SLACK_SIGNING_SECRET, oauth_settings=get_oauth_settings())
 
 # Register your handlers
+setup_oauth_handlers(app)
 ping_gin_route(app)
 ask_shifu_something(app)
 setup_register_route(app)
-setup_oauth_handlers(app)
+
+
+logging.basicConfig(level=logging.DEBUG)
 
 # Start an HTTP server on the specified port
 if __name__ == "__main__":

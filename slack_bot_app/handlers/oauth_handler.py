@@ -9,6 +9,7 @@ def handle_oauth_success(installation, request, response):
         print("✅ Install data sent successfully.")
     except Exception as e:
         print(f"❌ Error sending install data: {e}")
+    return response
 
 def handle_oauth_failure(error, request, response):
     print(f"❌ OAuth flow failed: {error}")
