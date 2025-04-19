@@ -11,12 +11,13 @@ def handle_oauth_success(installation, request, response):
         print(f"❌ Error sending install data: {e}")
     return response
 
-def handle_oauth_failure(error, request, response):
+def handle_oauth_failure(request, response):
     print(f"❌ OAuth flow failed: {error}")
     print(f"Request: {request}")
     print(f"Response: {response}")
     response.status = 500
     response.body = "OAuth installation failed."
+    return response
 
 def setup_oauth_handlers(app: App):
     app.oauth_flow.callback_options = CallbackOptions(
