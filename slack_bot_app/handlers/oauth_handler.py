@@ -22,11 +22,11 @@ def handle_oauth_success(request):
         # Access installation directly from SuccessArgs
         installation = request.installation
         install_data = installation.to_dict()
-        logger.debug(f"Installation data: {install_data}")
+        logger.debug("✅ Received install data")
 
         # Serialize install_data to handle datetime objects
         serialized_data = serialize_install_data(install_data)
-        logger.debug(f"Serialized installation data: {serialized_data}")
+        logger.debug(f"✅ Serialized installation data")
 
         # Make the POST request to store installation data
         response = requests.post(
